@@ -1,0 +1,74 @@
+import collections
+import sets, sys
+
+
+c1 = "0529242a631234122d2b36697f13272c207f2021283a6b0c7908"
+c2 = "2f28202a302029142c653f3c7f2a2636273e3f2d653e25217908"
+c3 = "322921780c3a235b3c2c3f207f372e21733a3a2b37263b313012"
+c4 = "2f6c363b2b312b1e64651b6537222e37377f2020242b6b2c2d5d"
+c5 = "283f652c2b31661426292b653a292c372a2f20212a316b283c09"
+c5 = "29232178373c270f682c216532263b2d3632353c2c3c2a293504"
+c6 = "613c37373531285b3c2a72273a67212a277f373a243c20203d5d"
+c7 = "243a202a633d205b3c2d3765342236653a2c7423202f3f652a18"
+c8 = "2239373d6f740a1e3c651f207f2c212a247f3d2e65262430791c"
+c9 = "263e203d63232f0f20653f207f332065262c3168313722367918"
+c10 = "2f2f372133202f142665212637222220733e383f2426386b"
+
+ciphers = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10]
+
+target_cipher = ""
+
+
+def strxor(a, b):     
+    return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b)])
+
+
+final_key = []*150
+
+known_key_positions = set()
+
+
+for current_index, ciphertext in enumerate(ciphers):
+	counter = collections.Counter()
+
+	for index, ciphertext2 in enumerate(ciphers):
+		if current_index != index: 
+			for indexOfChar, char in enumerate(strxor(ciphertext.decode('hex'), ciphertext2.decode('hex'))): 
+				
+				if char in string.printable and char.isalpha(): counter[indexOfChar] += 1 
+    knownSpaceIndexes = ""
+
+	
+	for ind, val in counter.items():
+		
+		if val >= 7: knownSpaceIndexes.append(ind)
+	
+	
+	xor_with_spaces = strxor(ciphertext.decode('hex'),' '*150)
+	for index in knownSpaceIndexes:
+		
+		final_key[index] = xor_with_spaces[index].encode('hex')
+		
+		known_key_positions.add(index)
+
+
+final_key_hex = ''.join([val if val is not None else '00' for val in final_key])
+
+output = strxor(target_cipher.decode('hex'),final_key_hex.decode('hex'))
+
+print ("Fix this sentence:")
+print (''.join([char if index in known_key_positions else '*' for index, char in enumerate(output)])+"\n")
+
+
+
+target_plaintext = "cure, Let Me know if you a"
+print ("Fixed:")
+print (target_plaintext+"\n")
+
+key = strxor(target_cipher.decode('hex'),target_plaintext)
+
+print ("Decrypted msg:")
+for cipher in ciphers:
+	print (strxor(cipher.decode('hex'),key))
+
+print ("\nPrivate key recovered: "+key+"\n")
