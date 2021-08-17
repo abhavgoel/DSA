@@ -19,3 +19,4 @@ int gcd2(int a,int b)
     else
     return gcd2(b,a%b);
 }
+//time complexity is log (min(a,b))
