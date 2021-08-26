@@ -9,7 +9,7 @@ bool isPrime(int n)
     {
         if(n%i==0)
         return false;
-        else return true;
+        
     }
 }
 
@@ -27,7 +27,7 @@ bool isPrime1(int n)
    {
        if(n%i==0)
        return false;
-       else return true;
+       
    } 
 }
 
@@ -42,6 +42,6 @@ bool isPrime3(int n)
     {
         if(n%i==0||n%(i+2)==0)
         return false;
-        else return true;
+       
     }
 }

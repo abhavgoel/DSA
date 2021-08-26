@@ -8,7 +8,7 @@ void sieve(int n)
     {
         if (isPrime[i])
         {
-            for (int j=j*i;j<=n;j=j+i)
+            for (int j=2*i;j<=n;j=j+i)
             {
                 isPrime[j]=false;
 
