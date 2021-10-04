@@ -37,4 +37,4 @@ int remDups1(int arr[],int n)
     }
     return res;
 }
-//O(n) time and space
+//O(n) time and O(1 )space
