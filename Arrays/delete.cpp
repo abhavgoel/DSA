@@ -11,7 +11,7 @@ int deleteEle(int arr[],int n,int x)
     }
     if(i==n)//if not present in the array
     return n;
-    for(int j=i;j<n-1;j++)
+    for(int j=i;j<n-1;j++)//loop
     {
         arr[j]=arr[j+1];
         
