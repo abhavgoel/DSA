@@ -1,43 +1,42 @@
 #include<bits/stdc++.h>
 using namespace std;
-/*we create a linked list and print all the lements in the node*/
-struct Node
-{
-    int data ;
-    Node *next;
-    Node(int x)
+
+/*---*/
+
+struct node{
+    int data;
+    node *next;
+    node(int x)
     {
         data=x;
         next=NULL;
-
     }
+
 };
-void printList(Node *head)
+void printing(node *head)
 {
-    Node *curr=head;
+    node *curr=head;
     while(curr!=NULL)
     {
-        cout<<(curr->data)<<" ";
+        cout<<curr->data;
         curr=curr->next;
     }
 }
-//recursive solution
-void rPrint(Node *head)
+void recur_printing(node *head)
 {
     if(head==NULL)
-    return;
-    cout<<(head->data)<<" ";
-    rPrint(head->next);
+    return ;
+    cout<<head->data<<" ";
+    recur_printing(head->next);
 }
-
 int main()
 {
-    Node *head=new Node(10);
-    head->next=new Node(20);
-    head->next->next=new Node (30);
-    head->next->next->next=new Node(40);
-    printList(head);
+    node *head=new node(10);
+    head->next=new node(20);
+    head->next->next=new node (30);
+    head->next->next->next=new node(40);
+    printing(head);
     cout<<endl;
-    rPrint(head);
+    recur_printing(head);
     return 0;
 }
