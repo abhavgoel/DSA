@@ -28,7 +28,7 @@ void recur_printing(node *head)
     return ;
     cout<<head->data<<" ";
     recur_printing(head->next);
-}
+} //auxillary space of O(n)
 int main()
 {
     node *head=new node(10);
