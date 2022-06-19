@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-int remDups(int arr[],int n)
+int remDups(int arr[],int n)//array should be sorted
+
 {
     int temp[n];
     temp[0]=arr[0];//coz the first element would be same even if it is repeating 
