@@ -8,7 +8,7 @@ int insert(int arr[],int n,int x,int cap,int pos)
     int index=pos-1;
     for(int i=n-1;i>=index;i--)
     {
-        arr[i+1]=arr[i];
+        arr[i]=arr[i-1];
        
     }
     arr[index]=x;
