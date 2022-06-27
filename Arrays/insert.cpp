@@ -6,7 +6,7 @@ int insert(int arr[],int n,int x,int cap,int pos)
     return n;
 
     int index=pos-1;
-    for(int i=n-1;i>=index;i++)
+    for(int i=n-1;i>=index;i--)
     {
         arr[i+1]=arr[i];
        
