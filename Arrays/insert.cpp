@@ -1,18 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
-int insert(int arr[],int n,int x,int cap,int pos)
+int* insertX(int n, int arr[],
+            int x, int pos)
 {
-    if(n==cap)//cap=capacity of the array
-    return n;
-
-    int index=pos-1;
-    for(int i=n-1;i>=index;i--)
-    {
-        arr[i]=arr[i-1];
-       
-    }
-    arr[index]=x;
-    return n+1;
+    int i;
+ 
+    // increase the size by 1
+    n++;
+ 
+    // shift elements forward
+    for (i = n; i >= pos; i--)
+        arr[i] = arr[i - 1];
+ 
+    // insert x at pos
+    arr[pos - 1] = x;
+ 
+    return arr;
 }
 //time complexity is O(n)
 //best case insert at end O(1)
