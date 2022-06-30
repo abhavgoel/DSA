@@ -24,10 +24,11 @@ void printing(node *head)
 }
 void recur_printing(node *head)
 {
-    if(head==NULL)
-    return ;
+    if(head!=NULL)
+    {
     cout<<head->data<<" ";
     recur_printing(head->next);
+    }
 } //auxillary space of O(n)
 int main()
 {

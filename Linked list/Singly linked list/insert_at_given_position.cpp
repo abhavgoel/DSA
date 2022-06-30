@@ -1,59 +1,70 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Node
+
+struct node
 {
     int data;
-    Node *next;
-    Node(int x)
+    node *next;
+
+    node(int x)
     {
         data =x;
         next=NULL;
-
     }
 };
-Node *insertPos(Node *head,int pos,int data)
+
+void printing(node *head)
 {
-    Node *temp=new Node(data);
-    if(pos==1)//change head of linked list
+    node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<endl;
+        curr=curr->next;
+
+    }
+}
+
+node* insertAtGiven(node *head,int pos,int data)
+{
+    node *temp = new node(data);
+    if(pos==1)
     {
         temp->next=head;
-        return temp;
+        head=temp;
+        return head;
+
     }
-    Node *curr=head;
-    for(int i=1;i<=pos-2&&curr!=NULL;i++)
+    node *curr=head;
+
+    for(int i=1;i<=pos-2 && curr!=NULL;i++)
     {
         curr=curr->next;
+
     }
-    if(curr==NULL)
+    if(curr==NULL)// if it is to be added at a position not in linked list
     {
-    return head;
+        return head;
     }
-    temp->next=curr->next;
+    temp->next=curr->next;//so we dont lose track of linked list after the position to be added
     curr->next=temp;
     return head;
 
+
+
 }
-void printList(Node *head)
-{
-    Node *curr=head;
-    while(curr!=NULL)
-    {
-        cout<<(curr->data)<<" ";
-        curr=curr->next;
-    }
-}
+
+
 int main()
 {
-    int pos,data;
-    Node *head=new Node(10);
-    head->next=new Node(20);
-    head->next->next=new Node (30);
-    head->next->next->next=new Node(40);
-    cout<<"Enter the position you want to add a node"<<endl;
-    cin>>pos;
-    cout<<"Enter the data"<<endl;
-    cin>>data;
-    Node *x=insertPos(head,pos,data);
-    printList(x);
-    return 0;
+    node *head = new node(10);
+    node *temp1 = new node(20);
+    node *temp2 = new node(30);
+
+     head->next = temp1;
+     temp1->next=temp2;
+    head=  insertAtGiven(head,3,5);
+    
+    printing(head);
+    
+
 }

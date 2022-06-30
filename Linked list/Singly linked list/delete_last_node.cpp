@@ -1,49 +1,60 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Node
+
+struct node
 {
     int data;
-    Node *next;
-    Node(int x)
+    node *next;
+
+    node(int x)
     {
         data =x;
         next=NULL;
-
     }
 };
-Node *delTail(Node *head)
+
+void printing(node *head)
+{
+    node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<endl;
+        curr=curr->next;
+
+    }
+}
+
+node* deleteLast(node *head)
 {
     if(head==NULL)
-    return NULL;
+        return NULL;
     if(head->next==NULL)
     {
         delete head;
         return NULL;
-
     }
-    Node *curr=head;
-    while(curr->next->next!=NULL)
-    curr=curr->next;
-    delete (curr->next);
-    curr->next=NULL;
+    node *temp=head;
+    while(temp->next->next!=NULL)
+        temp=temp->next;
+    delete (temp->next);
+    temp->next=NULL;
     return head;
+
+
 }
-void printList(Node *head)
-{
-    Node *curr=head;
-    while(curr!=NULL)
-    {
-        cout<<(curr->data)<<" ";
-        curr=curr->next;
-    }
-}
+
+
 int main()
 {
-    Node *head=new Node(10);
-    head->next=new Node(20);
-    head->next->next=new Node (30);
-    head->next->next->next=new Node(40);
+    node *head = new node(10);
+    node *temp1 = new node(20);
+    node *temp2 = new node(30);
+
+     head->next = temp1;
+     temp1->next=temp2;
+    head=  deleteLast(head);
     
-    printList(delTail(head));
-    return 0;
+    printing(head);
+    
+
 }

@@ -1,62 +1,62 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Node
+
+struct node
 {
     int data;
-    Node *next;
-    Node(int x)
+    node *next;
+
+    node(int x)
     {
         data =x;
         next=NULL;
-
     }
 };
-//iterative solution
-int search(Node *head,int x)
+
+void printing(node *head)
 {
-    int pos=1;
-    Node *curr=head;
+    node *curr=head;
     while(curr!=NULL)
     {
-        if(curr->data==x)
-        return pos;
-        else 
-        {
-         pos++;
-         curr=curr->next;
-        }
+        cout<<curr->data<<endl;
+        curr=curr->next;
+
     }
-    return -1;//if not present of list in empty
-    
 }
-//recursive solution
-int search1(Node *head,int x)
+
+int search(node *head,int x)
 {
-    if(head==NULL)
-    return -1;
-    if(head->data==x)
-    return 1;
+   node *curr=head;
+
+   int pos=1;
+   while(curr!=NULL)
+   {
+    if(curr->data==x)
+        return pos;
     else
     {
-        int res=search(head->next,x);
-        if(res==-1) return -1;
-        else return (res+1);
+        pos++;
+        curr=curr->next;
     }
+
+   }
+   return -1;//if not present;
+
+
 }
 
 
 int main()
 {
-    int x;
-    Node *head=new Node(10);
-    head->next=new Node(20);
-    head->next->next=new Node (30);
-    head->next->next->next=new Node(40);
-    cout<<"Enter the data you want to search"<<endl;
-    cin>>x;
-    cout<<"by iterative "<<search(head,x)<<endl;
-    cout<<"by recursive "<<search1(head,x)<<endl;
-    return 0;
+    node *head = new node(10);
+    node *temp1 = new node(20);
+    node *temp2 = new node(30);
+
+     head->next = temp1;
+     temp1->next=temp2;
+    cout<<"element present at "<<search(head,20)<<endl;
     
+    printing(head);
+    
+
 }
- 

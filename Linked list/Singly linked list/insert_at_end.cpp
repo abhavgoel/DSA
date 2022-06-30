@@ -1,45 +1,63 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Node
+
+struct node
 {
     int data;
-    Node *next;
-    Node(int x)
+    node *next;
+
+    node(int x)
     {
         data =x;
         next=NULL;
-
     }
 };
-Node *insertEnd(Node *head,int x)
+
+void printing(node *head)
 {
-    Node *temp=new Node(x);
-    if(head==NULL)
-    return temp;
-    Node *curr=head;
+    node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<endl;
+        curr=curr->next;
+
+    }
+}
+
+node *insertEnd(node *head,int x)
+{
+    node *temp=new node(x);
+
+    node *curr=head;
+    if(curr==NULL)
+    {
+        return temp;
+    }
     while(curr->next!=NULL)
     {
         curr=curr->next;
     }
     curr->next=temp;
     return head;
+   
+
+    
+
+
 }
-void printList(Node *head)
-{
-    Node *curr=head;
-    while(curr!=NULL)
-    {
-        cout<<(curr->data)<<" ";
-        curr=curr->next;
-    }
-}
+
+
 int main()
 {
-    Node *head=NULL;
-    head=insertEnd(head,10);
-    head=insertEnd(head,20);
-    head=insertEnd(head,30);
-    printList(head);
-    return 0;
+    node *head = NULL;
+    //node *temp1 = new node(20);
+    //node *temp2 = new node(30);
+
+    // head->next = temp1;
+    // temp1->next=temp2;
+   // printing(head);
+    head = insertEnd(head,5);
+     printing(head);
+    
 
 }
