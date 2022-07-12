@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 //only for positive numbers
-int largest__subarray(int arr[],int n,int k)//k=given sum
+int largest_subarray(int arr[],int n,int k)//k=given sum
 {
     int sum=0;
     int mx=INT_MIN;
@@ -37,6 +37,6 @@ int main()
 	int arr[15]={4, 1, 1, 1, 2, 3, 5};
 	int k = 5;
     int n=7;
-	cout << largest__subarray(arr,n, k);
+	cout << largest_subarray(arr,n, k);
 	return 0;
 }

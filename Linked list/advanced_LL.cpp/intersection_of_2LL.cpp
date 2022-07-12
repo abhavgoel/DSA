@@ -24,6 +24,7 @@ int intersection(node *head,node *head1)
         cout<<curr->data;
 
         curr=curr->next;
+        curr1=curr1->next;
     }
 }
 
