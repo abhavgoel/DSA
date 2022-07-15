@@ -8,13 +8,14 @@ int slidingWindow(int arr[],int n,int k)
     int i,j=0;
     while (j<n)
     {
-        sum+=arr[j];
+        sum+=arr[j];//calc
         if(j-i+1<k)
         j++;
         else if(j-i+1==k)
         {
+            //ans
             mx=max(mx,sum);
-            sum=sum-arr[i];
+            sum=sum-arr[i];//slide window
             i++;
             j++;
         }
