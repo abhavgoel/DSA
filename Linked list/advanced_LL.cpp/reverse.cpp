@@ -12,8 +12,7 @@ struct node
     }
 };
 
-node *reverseLL(node 
-*head)
+node *reverseLL(node *head)
 {
     node *curr=head;
     node *prev=NULL;
