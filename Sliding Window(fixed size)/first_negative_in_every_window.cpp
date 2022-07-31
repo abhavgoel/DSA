@@ -3,7 +3,7 @@ using namespace std;
 
 void sliding(int arr[],int n,int k)
 {
-    list<int> l;
+    list<int> l;//deque
     vector<int>v;
     int i=0,j=0;
     while(j<n)

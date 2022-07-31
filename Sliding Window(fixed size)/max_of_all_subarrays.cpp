@@ -5,7 +5,7 @@ vector<int> maxOfAllSubarrays(int arr[],int n,int k)
 {
     vector<int> v;
     int i=0,j=0;
-    list<int> l;
+    deque<int> l;
 
     while(j<n)
     {
@@ -38,16 +38,14 @@ int main()
     cin>>n;
     int arr[n];
     for(int i=0;i<n;i++)
-    {
         cin>>arr[i];
-    }
+    
     int k;
     cin>>k;
     vector<int> v;
     v=maxOfAllSubarrays(arr,n,k);
     for(auto i:v)
-    {
         cout<<i<<" ";
-    }
+    
 }
 

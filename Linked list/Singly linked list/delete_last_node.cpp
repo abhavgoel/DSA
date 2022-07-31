@@ -50,8 +50,8 @@ int main()
     node *temp1 = new node(20);
     node *temp2 = new node(30);
 
-     head->next = temp1;
-     temp1->next=temp2;
+    head->next = temp1;
+    temp1->next=temp2;
     head=  deleteLast(head);
     
     printing(head);
