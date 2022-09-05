@@ -7,7 +7,7 @@ int binarySearch(int arr[],int x,int n)//O(n)
     int high=n-1;
     while(low<=high)
     {
-        int mid=(low+high)/2;
+        int mid=low+ (high-low)/2; //to prevent overflow
         if(arr[mid]==x)
         return mid;
         if(arr[mid]>x)

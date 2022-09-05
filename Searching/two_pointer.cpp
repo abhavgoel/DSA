@@ -3,6 +3,8 @@ using namespace std;
 //find a pair with given sum
 bool isPair(int arr[],int left,int right,int sum)
 {
+    int n = sizeof(arr)/sizeof(arr[0]);
+    sort(arr,arr+n);
     
     while(left<right)
     {

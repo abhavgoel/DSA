@@ -4,24 +4,28 @@ int firstOcc(int arr[],int x,int n)
 {
     int low=0;
     int high=n-1;
+    int res=0;
     while(low<=high)
     {
-        int mid=(low+high)/2;
-        if(arr[mid]>x)
-        high=mid-1;
+        int mid=low+(high-low)/2;
 
-        else if(arr[mid]<x)
-        low=mid+1;
-
-        else if(arr[mid]==x)
+        if(x==arr[mid])
         {
-            if(mid==0||arr[mid-1]!=arr[mid])
-            return mid;
-            else
-            {
-                high=mid-1;//for case 2,2,2,2,3
-            }
+            res=mid;
+            high=mid-1;
         }
+        else if(x<arr[mid])
+        high=mid-1;
+        else low=mid+1;
     }
-    return -1;
+    return res;
+}
+int main()
+{
+    int arr[10]={1,2,3,4,6,6,6,8,9,10};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    cout<<"Enter the number to find";
+    int x;
+    cin>>x;
+    cout<<firstOcc(arr,x,n);
 }

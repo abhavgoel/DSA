@@ -40,3 +40,4 @@ int search(int arr[],int n,int x)
     }
     return -1;
 }
+//or find min element in roatetd array and do bin search on both sides of it and return the positive ans

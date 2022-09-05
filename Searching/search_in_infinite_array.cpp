@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-
+using namespace std;
 int binarySearch(int arr[],int x,int low,int high)//O(n)
 {
     while(low<=high)
@@ -18,18 +18,15 @@ int binarySearch(int arr[],int x,int low,int high)//O(n)
 }
 int search(int arr[],int x)
 {
-    if(arr[0]==x)
-    return 0;
-
-    int i=1;
-    while(arr[i]<x)
+    int low=0;
+    int high=1;
+    while(x>arr[high])
     {
-        i=i*2;
-        
+        low=high;
+        high=high*2;
     }
-    if(arr[i]==x)
-    return i;
-    else{
-        return binarySearch(arr,x,(i/2)+1,i-1);
-    }
+
+    cout<<binarySearch(arr,x,low,high);
+
+
 }
