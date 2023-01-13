@@ -18,15 +18,15 @@ int height(node *root)
     return max(height(root->left),height(root->right))+1;
 }
 
-// int maxDepth(TreeNode* root) {
-//          if(root==NULL)
-//             return NULL;
+int maxDepth(node* root) {
+         if(root==NULL)
+            return 0;
         
         
-//         int left = maxDepth(root->left);
-//         int right = maxDepth(root->right);
+        int lh = maxDepth(root->left);
+        int rh = maxDepth(root->right);
         
-//         int ans = max(left,right)+1;
+        int ans = max(lh,rh)+1;
         
-//         return ans;
-//     }
+        return ans;
+    }
