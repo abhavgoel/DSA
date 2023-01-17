@@ -31,9 +31,9 @@ void printSpiral(node *root)
         {
             node *curr=q.front();
             q.pop();
+
             if(reverse)
             s.push(curr->key);
-
             else cout<<curr->key<<" ";
 
             if(curr->left)
