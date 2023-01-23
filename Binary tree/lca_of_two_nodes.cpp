@@ -65,3 +65,22 @@ int main()
     cout<<"lca :"<<lca(root,40,50);
 
 }
+
+
+
+//optimized
+
+node* lowestCommonAncestor(node* root,node* p, node* q) {
+        if(root==NULL||root==p||root==q)
+            return root;
+        
+        node *left = lowestCommonAncestor(root->left,p,q);
+        node *right = lowestCommonAncestor(root->right,p,q);
+        
+        if(right==NULL)
+            return left;
+        else if(left==NULL)
+            return right;
+        else return root;
+        
+    }
