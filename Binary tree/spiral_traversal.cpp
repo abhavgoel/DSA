@@ -105,6 +105,6 @@ int main()
     root->left->left->left=new node(40);
     root->left->right->right=new node(50);
   
-    //printSpiral(root);
-    spiral(root);
+    printSpiral(root);
+    //spiral(root);
 }

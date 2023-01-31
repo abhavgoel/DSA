@@ -6,6 +6,8 @@
         "new": "cpp",
         "__locale": "cpp",
         "filesystem": "cpp",
-        "locale": "cpp"
+        "locale": "cpp",
+        "map": "cpp",
+        "vector": "cpp"
     }
 }
