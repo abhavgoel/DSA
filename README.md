@@ -1,2 +1,2 @@
 # DSA
-Basic DSA codes
+DSA problems
