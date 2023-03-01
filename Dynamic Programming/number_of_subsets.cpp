@@ -3,24 +3,24 @@ using namespace std;
 //handles 0 in array cases
 
 
-// int helper(int index,int target,vector<int>num,vector<vector<int>>&dp)
-// {
-//     //if(target==0)return 1;
-//     if(index==0)
-//     {
-//         if(target==0&&num[0]==0)return 2;
-//         else if(num[0]==target || target==0)return 1;
-//         return 0;
-//     }
-//     if(dp[index][target]!=-1)return dp[index][target];
-//     int notpick = helper(index-1,target,num,dp);
+int helper(int index,int target,vector<int>num,vector<vector<int>>&dp)
+{
+    //if(target==0)return 1;
+    if(index==0)
+    {
+        if(target==0&&num[0]==0)return 2;
+        else if(num[0]==target || target==0)return 1;
+        return 0;
+    }
+    if(dp[index][target]!=-1)return dp[index][target];
+    int notpick = helper(index-1,target,num,dp);
 
-//     int pick = 0;
-//     if(num[index]<=target)
-//     pick = helper(index-1,target-num[index],num,dp);
+    int pick = 0;
+    if(num[index]<=target)
+    pick = helper(index-1,target-num[index],num,dp);
 
-//     return dp[index][target]=  pick + notpick;
-// }
+    return dp[index][target]=  pick + notpick;
+}
 int findWays(vector<int> &num, int tar)
 {
     vector<vector<int>>dp(num.size(),vector<int>(tar+1,0));
