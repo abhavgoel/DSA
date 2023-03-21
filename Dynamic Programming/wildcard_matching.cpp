@@ -72,4 +72,4 @@ int helper(int i,int j,string str,string pattern,vector<vector<int>>&dp)
 
         
     }
-};
+}; 
