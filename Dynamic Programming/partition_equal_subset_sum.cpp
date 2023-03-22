@@ -38,7 +38,7 @@ bool helper(int index,int target,vector<int>arr)
     {
         for(int target=1;target<=k;target++)
         {
-             bool notpick = dp[index-1][target];
+            bool notpick = dp[index-1][target];
             bool pick = false;
 
             if(arr[index]<=target)
