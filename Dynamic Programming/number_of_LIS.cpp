@@ -17,7 +17,7 @@ public:
                 dp[i]=1+dp[prev];
                 cnt[i]=cnt[prev];//LIS increasing in size so count of prev element
                 }
-                else if(nums[i]>nums[prev] && 1+dp[prev]==dp[i])
+                else if(nums[i]>nums[prev] && 1+dp[prev]==dp[i])//and if length equal to prev LIS...increase the count with prev
                 cnt[i]+=cnt[prev];
 
             }
