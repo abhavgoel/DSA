@@ -35,9 +35,39 @@ int helper(int i,int j , string &s,vector<int>&dp)
     }
     return dp[i] = ans;
 }
-    int minCut(string s) {
+    // int minCut(string s) {
+    //     int n=s.length();
+    //     vector<int>dp(n,-1);
+    //     return helper(0,n-1,s,dp);
+    // }
+
+      int minCut(string s) {
         int n=s.length();
-        vector<int>dp(n,-1);
-        return helper(0,n-1,s,dp);
+        // vector<int>dp(n,-1);
+        // return helper(0,n-1,s,dp);
+        vector<int>dp(n+1,0);
+       
+        dp[n]=0;
+        for(int i=n-1;i>=0;i--)
+        {
+            if(isPalindrome(i,n-1,s))
+            dp[i]=0;
+            else
+            {
+                int ans=INT_MAX;
+                for(int ind=i;ind<n-1;ind++)
+                {
+                
+                    if(isPalindrome(i,ind,s))
+                    {
+                    int partition = 1+dp[ind+1];
+                    ans=min(ans,partition);
+                    }
+
+                }
+                dp[i] = ans;
+            }
+        }
+        return dp[0];
     }
 };
