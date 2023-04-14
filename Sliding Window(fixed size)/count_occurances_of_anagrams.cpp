@@ -14,7 +14,7 @@ int countOcc(string x,string s)
     int count=m.size();
     while(j<s.size())
     {
-        if(m.find(s[j])!=m.end())
+        if(m.find(s[j])!=m.end())//if present in map
         {
             m[s[j]]--;
             if(m[s[j]]==0)
@@ -30,10 +30,8 @@ int countOcc(string x,string s)
         {
             if(count==0)
             ans++;
-
-
-        
-        if(m.find(s[i])!=m.end())
+            
+        if(m.find(s[i])!=m.end())//if present in map then only delete and slide the window
         {
             m[s[i]]++;
             if(m[s[i]]==1)

@@ -26,10 +26,11 @@ void sliding(int arr[],int n,int k)
                     if(arr[i]==l.front())
                         l.pop_front();
                     
-                    i++;
-                    j++;
+                    
                     
                 }
+                i++;
+                j++;
             }
 
     }
