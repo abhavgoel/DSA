@@ -31,7 +31,7 @@ bool dfs(int node , int parent , vector<int>&vis,vector<int>adj[])
             int par = q.front().second;
             q.pop();
             
-            for(auto i:adj[curr])
+            for(auto i:adj[curr])//i children of curr
             {
                 if(vis[i]==0)
                 {
