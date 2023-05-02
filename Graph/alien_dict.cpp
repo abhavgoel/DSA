@@ -73,3 +73,8 @@ vector<int>topoSort(vector<vector<int>>&graph,int V)
         
         
     }
+
+    //follow up - 
+    //if the larger string comes before the shorter order is not possible
+    // eg - "abcd" "abc"
+    //and if there is a cycle also not possible
