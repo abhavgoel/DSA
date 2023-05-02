@@ -17,8 +17,6 @@ bool dfs(int node,vector<int>&vis,vector<int>&pathvis,vector<vector<int>>&adj)
         {
             if(dfs(i,vis,pathvis,adj)==true)
             return true;
-
-            
         }
         else if(vis[i]==1 && pathvis[i]==1)
         return true;
