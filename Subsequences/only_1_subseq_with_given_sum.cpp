@@ -12,7 +12,7 @@ bool oneSubseq(int index,vector<int>&ds,vector<int>&nums,int s,int sum)
         cout<<endl;
         return true;
         }
-         return false;
+        return false;
     }
 
     ds.push_back(nums[index]);
