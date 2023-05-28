@@ -1,6 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//we sort so that the subproblems are independent 
+// eg 1,3,4,5,2 --->if we make a cut at  4 then the rob will be 1,2,3,4 and the for next sub
+//problem the 2 will be present in first subproblem
+//so we need to sort
+
 class Solution {
 public:
 long long helper(int i,int j,vector<int>&cuts, vector<vector<int>>&dp)
