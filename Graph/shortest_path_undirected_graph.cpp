@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+//variation of dijkstra
 
 vector<int> shortestPath(vector<vector<int>>& edges, int N,int M, int src){
         vector<vector<int>>graph(N);

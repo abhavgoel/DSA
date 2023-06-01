@@ -24,7 +24,6 @@ void topoSort(int node,stack<int>&st,vector<int>&vis,vector<vector<pair<int,int>
         }
         stack<int>st;
         
-     
         vector<int>vis(N,0);
         for(int i=0;i<N;i++)
         {
@@ -46,8 +45,6 @@ void topoSort(int node,stack<int>&st,vector<int>&vis,vector<vector<pair<int,int>
                 if(dist[node] + wt < dist[v])
                 dist[v]=dist[node] + wt;
             }
-            
-           
         }
         for(int i=0;i<N;i++)
         {
@@ -55,7 +52,4 @@ void topoSort(int node,stack<int>&st,vector<int>&vis,vector<vector<pair<int,int>
             dist[i]=-1;
         }
         return dist;
-        
-        
-        
     }

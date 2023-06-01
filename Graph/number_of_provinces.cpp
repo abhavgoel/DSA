@@ -60,6 +60,5 @@ void bfs(int node , vector<int>&vis,vector<vector<int>>&adjlist)
             }
         }
         return count;
-
     }
 };
