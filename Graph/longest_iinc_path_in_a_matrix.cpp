@@ -20,7 +20,6 @@ int helper(int i,int j,vector<vector<int>>&matrix,vector<vector<int>>&dp)
         if(r>=0 && r<matrix.size() && c>=0 && c<matrix[0].size() && matrix[r][c]>matrix[i][j])
         {
             maxi = max(maxi,1+helper(r,c,matrix,dp));
-            
         }
 
     }
