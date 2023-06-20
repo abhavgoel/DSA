@@ -1,5 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
+
+//fails for negative weight edges,
+//and fails for neative cycle
+
+//works for positive cycle graphs
+
 //O(ElogV)
 //using priority queue because normal queue would go for all paths but the PQ will only continue on the shortest path
 vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
