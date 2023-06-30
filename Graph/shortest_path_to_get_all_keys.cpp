@@ -72,7 +72,7 @@ public:
                         //cout<<row<<" "<<col<<endl;
                     }
                     else if(grid[row][col]>='a' && grid[row][col]<='f' 
-                    )//key
+                    &&vis[row][col][mask]==0)//key
                     {
                         int newmask = mask | (1<<(grid[row][col]-'a'));
                         if(vis[row][col][newmask]==0)
