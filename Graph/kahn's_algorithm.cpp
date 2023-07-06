@@ -2,7 +2,7 @@
 using namespace std;
 
 //step -1 -> insert all nodes with indegree = 0 , as they wont have any node before them, so they can appear at the first of topo sort
-//step - 2 -> take them out of the queue and minus the indegree of where they pount and if indegree 0 push further in the queue
+//step - 2 -> take them out of the queue and minus the indegree of where they point and if indegree 0 push further in the queue
 
 vector<int> topoSort(int V, vector<int> adj[]) 
 	{
