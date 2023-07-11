@@ -1,7 +1,10 @@
 class Solution {
-    // public:
+    
     public:
-  vector<int>arti;
+    // the idea is that if the low of adjacent node is greater than or equal to the current node, then current node is 
+    //an articulation point
+
+    vector<int>arti;
     int timer = 1;
     
     void dfs(int node , int parent,vector<int>&vis,vector<int>&tin,vector<int>&low,vector<int>adj[])
@@ -26,7 +29,9 @@ class Solution {
                 }
                 child++;
             }
-            else low[node] = min(low[node],tin[it]);
+            else low[node] = min(low[node],tin[it]);//we take the discovery time of node , 
+            //bcoz if that node is to be removed we cant reach previous nodes that
+            // come before it,bcoz it is gonna be removed....so discovery time not lowest time
         }
         if(child>1&&parent==-1)
         arti[node]=1;
@@ -44,7 +49,7 @@ class Solution {
             if(vis[i]==0)
             dfs(i,-1,vis,tin,low,adj);
         }
-        // vector<int>ans;
+        
         for(int i=0;i<V;i++)
         {
             if(arti[i]==1)
