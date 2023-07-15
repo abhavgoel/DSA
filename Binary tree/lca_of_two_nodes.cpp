@@ -1,86 +1,26 @@
-#include<bits/stdc++.h>
-using namespace std;
-struct node
-{
-    int key;
-    node *left;
-    node *right;
-    node(int k)
-    {
-        key=k;
-        left=right=NULL;
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root==NULL || root==p ||root==q)
+        return root;
+
+        TreeNode* left = lowestCommonAncestor(root->left,p,q);
+        TreeNode* right = lowestCommonAncestor(root->right,p,q);
+
+        if(left==NULL)
+        return right;
+        else if(right==NULL)
+        return left;
+        else //found LCA
+        return root;
     }
 };
-
-bool findPath(node* root,vector<int>&arr,int x)
-{
-    if(root==NULL)
-    return false;
-
-    arr.push_back(root->key);
-
-    if(root->key==x)
-    return true;
-
-    if(findPath(root->left,arr,x) || findPath(root->right,arr,x))
-    return true;
-
-    arr.pop_back();
-    return false;
-
-
-}
-int lca(node *root,int n1,int n2)
-{
-    vector<int>path1,path2;
-
-    if(findPath(root,path1,n1)==false ||findPath(root,path2,n2)==false )
-    return -1;
-
-    for(int i=0;i<path1.size()-1 && i<path2.size()-1;i++)
-    {
-        if(path1[i+1]!=path2[i+1])
-        return path1[i];
-    }
-    return -1;
-
-}
-int main()
-{
-    node *root=new node(10);
-    root->left=new node(20);
-    root->right=new node(30);
-    root->right->left=new node(40);
-    root->right->right=new node(50);
-
-    vector<int>path1,path2;
-    findPath(root,path1,50);
-    findPath(root,path2,40);
-    for(auto i:path1)
-    cout<<i<<" ";
-    cout<<endl;
-    for(auto i:path2)
-    cout<<i<<" ";
-    cout<<endl;
-    cout<<"lca :"<<lca(root,40,50);
-
-}
-
-
-
-//optimized
-
-node* lowestCommonAncestor(node* root,node* p, node* q) {
-        if(root==NULL||root==p||root==q)
-            return root;
-        
-        node *left = lowestCommonAncestor(root->left,p,q);
-        node *right = lowestCommonAncestor(root->right,p,q);
-        
-        if(right==NULL)
-            return left;
-        else if(left==NULL)
-            return right;
-        else return root;
-        
-    }
