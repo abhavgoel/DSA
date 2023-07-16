@@ -1,35 +1,79 @@
-#include<bits/stdc++.h>
-using namespace std;
-struct node
-{
-    int key;
-    node *left;
-    node *right;
-    node(int k)
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void linkParents(TreeNode* root,map<TreeNode*,TreeNode*>&parent)
     {
-        key=k;
-        left=right=NULL;
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty())
+        {
+            TreeNode* curr = q.front();
+            q.pop();
+
+            if(curr->left)
+            {
+                q.push(curr->left);
+                parent[curr->left] = curr;
+            }
+            if(curr->right)
+            {
+                q.push(curr->right);
+                parent[curr->right] = curr;
+            }
+        }
+    }
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+        map<TreeNode*,TreeNode*>parent;
+        linkParents(root,parent);
+
+        queue<pair<TreeNode*,int>>q;
+        q.push({target,0});
+        vector<int>ans;
+        map<TreeNode*,int>vis;
+        vis[target]=1;
+        while(q.empty()==false)
+        {
+            int sz = q.size();
+
+            for(int i=0;i<sz;i++)
+            {
+                TreeNode* curr = q.front().first;
+                int d = q.front().second;
+                q.pop();
+
+                if(d==k)
+                ans.push_back(curr->val);
+                else if(d>k)
+                break;
+
+                if(curr->left && vis[curr->left]==0)
+                {
+                q.push({curr->left,d+1});
+                vis[curr->left]=1;
+                }
+
+                if(curr->right && vis[curr->right]==0)
+                {
+                q.push({curr->right,d+1});
+                vis[curr->right]=1;
+                }
+
+                if(parent.find(curr)!=parent.end() && vis[parent[curr]]==0)
+                {
+                    q.push({parent[curr],d+1});
+                    vis[parent[curr]]=1;
+                }
+
+            }
+        }
+        return ans;
     }
 };
-void printk(node *root,int k)
-{
-    if(root==NULL)
-    return;
-    if(k==0)
-    cout<<root->key<<" ";
-    else
-    {
-        printk(root->left,k-1);
-        printk(root->right,k-1);
-    }
-}
-
-int main()
-{
-    node *root=new node(10);
-    root->left=new node(20);
-    root->right=new node(30);
-    root->right->left=new node(40);
-    root->right->right=new node(50);
-    printk(root,1);
-}
