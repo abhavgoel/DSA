@@ -20,7 +20,7 @@ class Solution{
     NodeValue helper(Node* root)
     {
         if(root==NULL)
-        return NodeValue(INT_MAX,INT_MIN,0);//leaf node so sending max values so, that in next step the leaf node takes the value of itself and min and max
+        return NodeValue(INT_MAX,INT_MIN,0);//leaf node so sending max values so, that in next step the leaf node takes the value of itself 
         
         //doing a postorder traversal ,bcoz to check for bst, we need ;left tree computations and right tree computations before hand
         auto left = helper(root->left);
@@ -33,7 +33,7 @@ class Solution{
             return NodeValue(min(left.minNode , root->data) , max(root->data, right.maxNode),left.maxSize+right.maxSize+1);
             
         }
-        return NodeValue(INT_MIN,INT_MAX,max(left.maxSize,right.maxSize));
+        return NodeValue(INT_MIN,INT_MAX,max(left.maxSize,right.maxSize));//else return max values bcoz that subtree would never be a BST
         
     }
     
