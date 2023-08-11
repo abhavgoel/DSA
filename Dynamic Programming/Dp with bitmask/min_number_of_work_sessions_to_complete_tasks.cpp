@@ -19,9 +19,11 @@ int helper(int time,int mask,int sessionTime,vector<int>&tasks)
 
         if(time+tasks[j]<=sessionTime)
         pickInThisSession = helper(time+tasks[j],mask | (1<<j),sessionTime,tasks);
+        //add to current session by increasing the time value by tasks[j]
 
         int pickInNextSession = 1 + helper(tasks[j], mask | (1<<j),sessionTime,tasks);
-        
+        //start a new session with initial value as tasks[j]
+
         ans=min(ans,min(pickInThisSession,pickInNextSession));
     }
     return dp[time][mask] = ans;
