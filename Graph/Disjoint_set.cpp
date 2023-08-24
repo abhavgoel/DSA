@@ -20,8 +20,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class DSU
-{
+class DSU{
     vector<int>rank,parent,size;
     public:
     DSU(int n)
