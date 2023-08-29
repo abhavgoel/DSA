@@ -15,13 +15,18 @@ vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
         dist[S]=0;
         priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
         pq.push({0,S});
-        
+        vector<int>vis(V,0);
         while(pq.empty()==false)
         {
             int d = pq.top().first;
             int node = pq.top().second;
             
             pq.pop();
+
+            if(vis[node] == 1)
+            continue;
+
+            vis[node]=1;
             
             for(auto i:adj[node])
             {
