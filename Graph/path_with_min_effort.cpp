@@ -1,44 +1,50 @@
-#include<bits/stdc++.h>
-using namespace std;
-
+#define P pair<int,pair<int,int>>
 class Solution {
 public:
-vector<int>dx={0,0,1,-1};
-vector<int>dy={1,-1,0,0};
+    vector<int>dx={0,0,1,-1};
+    vector<int>dy={1,-1,0,0};
     int minimumEffortPath(vector<vector<int>>& heights) {
-        priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>pq;
-
         int n = heights.size();
         int m = heights[0].size();
+        priority_queue<P,vector<P>,greater<P>>pq;
+
+        pq.push({0,{0,0}});//{effort,{i,j}}
+
         vector<vector<int>>dist(n,vector<int>(m,1e9));
-        pq.push({0,{0,0}});
-        dist[0][0]=0;
+
         while(!pq.empty())
         {
-            int diff = pq.top().first;
-            int r = pq.top().second.first;
-            int c = pq.top().second.second;
+            auto it = pq.top();
             pq.pop();
 
-            if(r==n-1 && c==m-1)
-            return diff;
+            int i = it.second.first;
+            int j = it.second.second;
+            int prevEffort = it.first;
 
-            for(int k=0;k<4;k++)    
+            if(i==n-1 && j==m-1)
+            return prevEffort;
+
+            for(int k=0;k<4;k++)
             {
-                int newr = r + dx[k];
-                int newc = c + dy[k];
+                int row = i + dx[k];
+                int col = j + dy[k];
+                
+                
 
-                if(newr>=0 && newc>=0 && newr<heights.size() && newc<heights[0].size())
+                if(row>=0 && row<n && col>=0 && col<m)
                 {
-                    int effort = max(diff,abs(heights[r][c]-heights[newr][newc]));
-                    if(effort<dist[newr][newc])
+                    int effort = max(prevEffort,abs(heights[i][j] - heights[row][col]));
+                    //taking max from prev effort of the path
+                    if(effort<dist[row][col])
                     {
-                        dist[newr][newc] = effort;
-                        pq.push({dist[newr][newc],{newr,newc}});
+                        dist[row][col]=effort;
+                        pq.push({dist[row][col],{row,col}});
                     }
                 }
             }
+
         }
         return -1;
+
     }
 };
