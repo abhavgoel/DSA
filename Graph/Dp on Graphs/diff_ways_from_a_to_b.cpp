@@ -1,4 +1,4 @@
-dp[n] = -0 for all n
+dp[n] = 0 for all n
 dp[a]=1;
 
 for(int i=0;i<topo.size();i++)
