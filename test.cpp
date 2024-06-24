@@ -3,19 +3,8 @@ using namespace std;
 
 int main()
 {
-    priority_queue<int>pq;
-    pq.push(10);
-     pq.push(8);
-      pq.push(5);
-       pq.push(3);
-        pq.push(2);
-         pq.push(1);
-          pq.push(7);
-    while(pq.empty()==false)
-    {
-        cout<<pq.top();
-        pq.pop();
-    }
+    vector<int>v = {1,3,4,3,2,4,5,2,12,3,13,4,21};
 
+    cout<<lower_bound(begin(v),end(v),10) - begin(v);
     return 0;
 }

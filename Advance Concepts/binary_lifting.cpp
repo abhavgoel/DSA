@@ -4,7 +4,7 @@ public:
     //up array is defined as up[i][j] --> 2^j th ancestor of ith node
     int LOG;
     TreeAncestor(int n, vector<int>& parent) {
-        LOG = ceil(log2(n));
+        LOG = ceil(log2(1e9));
         up.resize(n,vector<int>(LOG+1,-1));
         for(int i=0;i<n;i++)
         {
@@ -48,9 +48,3 @@ public:
         return ans;
     }
 };
-
-/**
- * Your TreeAncestor object will be instantiated and called as such:
- * TreeAncestor* obj = new TreeAncestor(n, parent);
- * int param_1 = obj->getKthAncestor(node,k);
- */
